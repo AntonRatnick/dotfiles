@@ -44,6 +44,9 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'liuchengxu/vim-which-key'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-fugitive'
+Plug 'stsewd/fzf-checkout.vim'
+Plug 'mbbill/undotree'
 call plug#end()
 
 " > Plugins
@@ -72,6 +75,7 @@ nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
 let g:which_key_map =  {}
 let g:which_key_map.c = { 'name' : '+coc' }
+let g:which_key_map.g = { 'name' : '+git' }
 
 nmap <space>cd <Plug>(coc-definition)
 let g:which_key_map.c.d = 'goto definition'
@@ -79,11 +83,44 @@ let g:which_key_map.c.d = 'goto definition'
 nmap <space>ca <Plug>(coc-codeaction)
 let g:which_key_map.c.a = 'code action'
 
+nmap <silent><nowait> <space>cp  :<C-u>CocCommand prettier.formatFile<cr>
+let g:which_key_map.c.p = 'prettier'
+
 nmap <space>ch :call CocActionAsync('doHover')<CR>
 let g:which_key_map.c.h = 'show help'
 
+nmap <silent><nowait> <space>cg  :<C-u>CocList grep<cr>
+let g:which_key_map.c.g = 'grep'
+
+nmap <silent><nowait> <space>cc  :<C-u>CocList commands<cr>
+let g:which_key_map.c.c = 'commands'
+
+nmap <silent><nowait> <space>cb  :<C-u>CocList buffers<cr>
+let g:which_key_map.c.b = 'buffers'
+
+noremap <space>gs :G<CR>
+let g:which_key_map.g.s = 'status'
+
+noremap <space>gb :Git blame<CR>
+let g:which_key_map.g.b = 'blame'
+
+noremap <space>gc :GCheckout <CR>
+let g:which_key_map.g.c = 'checkout'
+
+noremap <space>gc :GCheckout <CR>
+let g:which_key_map.g.cc = 'commit'
+
+noremap <space>gp :Gpull <CR>
+let g:which_key_map.g.p = 'pull'
+
+noremap <space>gpu :Gpush <CR>
+let g:which_key_map.g.pu = 'push'
+
 nmap <space>n :CocCommand explorer<CR>
 let g:which_key_map.n = 'toggle navigation'
+
+nmap <space>u :UndotreeToggle<CR>
+let g:which_key_map.u = 'toggle undotree'
 
 noremap <space>s :w<CR>
 let g:which_key_map.s = 'save'
@@ -99,7 +136,5 @@ let g:which_key_map.m = 'add cursor for word'
 " < Multiple cursors
 
 " < WhichKey
-
-
 
 

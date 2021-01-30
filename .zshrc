@@ -12,6 +12,8 @@ export TERMINAL=alacritty
 export BROWSER=/var/lib/flatpak/exports/bin/org.mozilla.firefox
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+export EDITOR="/usr/bin/nvim"
+
 
 alias ls="exa"
 alias la="exa -la"
